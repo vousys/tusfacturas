@@ -5,10 +5,10 @@ Mediante nuestra API podrás conectar tu sistema de gestión actual, con nuestra
 Encontrá toda la documentación aquí: https://tusfacturas.gitbook.io/api-factura-electronica-afip.
 Registrate en: https://www.tusfacturas.com.ar/
 
-##Ejemplos de uso.
+## Ejemplos de uso.
 
 
-###Estado de los servicios:
+### Estado de los servicios:
 Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/estado-de-los-servicios-afip
 
 ```
@@ -18,7 +18,7 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/esta
 ```
 
 
-###Generar Nuevo Comprobante:
+### Generar Nuevo Comprobante:
 Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
 
 ```
