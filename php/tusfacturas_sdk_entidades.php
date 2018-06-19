@@ -19,9 +19,10 @@
  * 
  * 
  * METODOS INCLUIDOS:
- * 
- *     producto                    Arma un item para enviar en un comprobante
- *     comprobante_detalle_item    Arma un item para el objeto "detalle" de un comprobante    
+ *     comprobante                 Arma la estructura del comprobante, requerida para crear un nuevo comprobante .
+ *     comprobante_cliente         Arma la estructura del cliente, requerida para crear un nuevo comprobante .
+ *     comprobante_detalle_item    Arma la estructura del item para el objeto "detalle" de un comprobante.    
+ *     producto                    Arma la estructura del producto, que componen un item del detalle.
  * 
  * ======================================================================================
  */
