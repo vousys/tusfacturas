@@ -155,7 +155,6 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                     "documento_nro"  => $parametros["documento_nro"],
                     "provincia"      => (intval($parametros["provincia"])   != 0  ? $parametros["provincia"] : 1),
                     "envia_por_mail" => (trim($parametros["envia_por_mail"])!= '' ? $parametros["envia_por_mail"] : "N"),
-                    "alicuota"       => $parametros["alicuota"],
                     "condicion_pago" => intval($parametros["condicion_pago"]),
                     "condicion_iva"  => $parametros["condicion_iva"]  
                 );
