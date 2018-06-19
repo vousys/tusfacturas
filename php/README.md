@@ -7,6 +7,10 @@ Registrate en: https://www.tusfacturas.com.ar/
 
 Ejemplo de uso:
 
+```
    $tusfacturas_sdk_obj  = new tusfacturas_sdk();
+   
    $tusfacturas_sdk_obj->set_keys( TUSFACTURAS_APIKEY, TUSFACTURAS_APITOKEN, TUSFACTURAS_USERTOKEN  );
+   
    $tusfacturas_sdk_obj->estado_servicios();
+```
