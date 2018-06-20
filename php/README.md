@@ -34,6 +34,49 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/esta
 ```
 
 
+
+### Consulta de numeración de comprobantes:
+Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/consultar-numeracion-de-comprobantes
+
+```
+   $tusfacturas_sdk_obj  = new tusfacturas_sdk();
+   $tusfacturas_sdk_obj->set_keys( TUSFACTURAS_APIKEY, TUSFACTURAS_APITOKEN, TUSFACTURAS_USERTOKEN  );
+  
+  // ===== Armo los datos a enviar =====
+  
+   $comprobante_data["tipo"] 		= "FACTURA B";
+   $comprobante_data["punto_venta"] 	= "0001"; 
+   $comprobante_data["operacion"] 	= "V"; 
+   
+   
+  // ===== Envio a generar el comprobante =====
+   
+   $response = $tusfacturas_sdk_obj->numeracion (  $tusfacturas_sdk_entidades->comprobante($comprobante_data) );
+					  
+					  
+
+
+   // ===== Controlo si hay error =====
+
+   if (!$tusfacturas_sdk_obj->hay_error($response)) {
+            echo "<p>
+                      Proximo numero a generar : ".$response->comprobante->numero. " 
+                  </p>";
+
+   }else{
+            echo "<p>
+                      Se han encontrado los siguientes errores:<br />
+                       ".implode("<br />",$response->errores). "
+                  </p>";
+   }
+   					  
+   
+   
+   
+```
+
+
+
 ### Generar Nuevo Comprobante:
 Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
 
@@ -48,7 +91,7 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/fact
    
    $cliente_data	=  array(
                           "documento_tipo" => "DNI",    
-                          "razon_social"   => "JUAN PEREZ",
+                          "razon_social"   => "JUAN PÉREZ NIÑO",
                           "email"          => "email@email.com",
                           "domicilio"      => "Avenida Siempreviva 742",
                           "documento_nro"  => "12345678",
@@ -100,9 +143,10 @@ $comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detal
 
    // ===== Envio a generar el comprobante =====
    
-   $tusfacturas_sdk_obj->comprobante_nuevo(  $tusfacturas_sdk_entidades->comprobante($comprobante_data) , 
-                                             $tusfacturas_sdk_entidades->comprobante_cliente($cliente_data)     
-                                          );
+   $response = $tusfacturas_sdk_obj->comprobante_nuevo(  
+   						$tusfacturas_sdk_entidades->comprobante($comprobante_data) , 
+                                             	$tusfacturas_sdk_entidades->comprobante_cliente($cliente_data)     
+                                          	);
 					  
 					  
 
