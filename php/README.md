@@ -22,14 +22,15 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/esta
 Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
 
 ```
-   $tusfacturas_sdk_obj             = new tusfacturas_sdk();
+   $tusfacturas_sdk_obj          = new tusfacturas_sdk();
+   $tusfacturas_sdk_entidades	 = new tusfacturas_sdk_entidades();
    $tusfacturas_sdk_obj->set_keys( TUSFACTURAS_APIKEY, TUSFACTURAS_APITOKEN, TUSFACTURAS_USERTOKEN  );
 
 
 
    // ===== Datos del cliente  =======
    
-   $cliente_data		=  array(
+   $cliente_data	=  array(
                           "documento_tipo" => "DNI",    
                           "razon_social"   => "JUAN PEREZ",
                           "email"          => "email@email.com",
@@ -43,35 +44,42 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/fact
                                         
                                           
    // =====  Datos del comprobante a generar =====
+   
    // Cabecera de la factura
-   $comprobante_data["tipo"] 			= "FACTURA B";
-	$comprobante_data["punto_venta"] = "0001";
-	$comprobante_data["fecha"]			= "20/05/2018";
+   
+   $comprobante_data["tipo"] 		= "FACTURA B";
+   $comprobante_data["punto_venta"] 	= "0001";
+   $comprobante_data["fecha"]		= "20/05/2018";
    $comprobante_data["numero"]		= 20;
-   // Existen otros datos, consultar la documentación
+   // (Existen otros datos opcionales a enviar, consultar la documentación)
+
 
    // Armo el detalle de los conceptos
-   $comprobante_data["detalle"] 		= array();
-   $comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detalle_item(
-                                    array (
-                                          "cantidad" 		=> $pedido_items["cantidad"],
-                                          "afecta_stock"  => "N",
-                                          "leyenda"		=> "",
-                                          "producto"		=> $tusfacturas_sdk_entidades->producto( 
+
+$comprobante_data["detalle"]     = array();
+$comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detalle_item(
+						    array (
+							  "cantidad" 		=> $pedido_items["cantidad"],
+							  "afecta_stock"  	=> "N",
+							  "leyenda"		=> "",
+							  "producto"		=> $tusfacturas_sdk_entidades->producto( 
                                                                         array(
-                                                                              "descripcion" 	=> "HONORARIOS PROFESIONALES",
-                                                                              "unidad_bulto"  => 1,
-                                                                              "lista_precios" => "Lista general",
+                                                                              "descripcion" 	=> "HONORARIOS",
+                                                                              "unidad_bulto"    => 1,
+                                                                              "lista_precios"   => "Lista general",
                                                                               "codigo"		=> "HON",	
                                                                               "precio_unitario_sin_iva" => 100,
-                                                                              "alicuota"		=> 21,
-                                                                              "unidad_medida" => 7
+                                                                              "alicuota"	=> 21,
+                                                                              "unidad_medida" 	=> 7
                                                                            )
                                                          )
                                        )
                                     );
+				    
    // totales
-   $comprobante_data["total"]			= 121; 
+   
+   $comprobante_data["total"]	   = 121; 
+
 
 
    // ===== Envio a generar el comprobante =====
