@@ -5,6 +5,22 @@ Mediante nuestra API podrás conectar tu sistema de gestión actual, con nuestra
 Encontrá toda la documentación aquí: https://tusfacturas.gitbook.io/api-factura-electronica-afip.
 Registrate en: https://www.tusfacturas.com.ar/
 
+
+### SDK para PHP:
+Estas librerias proveen un set de clases y metodos para interactuar con la API de TusFacturas.com.ar.
+
+#### Versiones de PHP Soportadas:
+El SDK soporta PHP 5 o superior
+
+#### Inicio Rápido
+1. Incluí en tu proyecto los archivos archivo tusfacturas_sdk.php y tusfacturas_sdk_entidades.php
+2. Configura tus credenciales
+3. Invocá el método que necesitas implementar.
+4. Manejá las respuestas
+
+
+
+
 ## Ejemplos de uso.
 
 
