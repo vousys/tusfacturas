@@ -49,7 +49,7 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/cons
    $comprobante_data["operacion"] 	= "V"; 
    
    
-  // ===== Envio a generar el comprobante =====
+  // ===== Consulto la proxima numeracion =====
    
    $response = $tusfacturas_sdk_obj->numeracion (  $tusfacturas_sdk_entidades->comprobante($comprobante_data) );
 					  
