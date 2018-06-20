@@ -59,7 +59,7 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/fact
 $comprobante_data["detalle"]     = array();
 $comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detalle_item(
 						    array (
-							  "cantidad" 		=> $pedido_items["cantidad"],
+							  "cantidad" 		=> 1,
 							  "afecta_stock"  	=> "N",
 							  "leyenda"		=> "",
 							  "producto"		=> $tusfacturas_sdk_entidades->producto( 
@@ -87,5 +87,26 @@ $comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detal
    $tusfacturas_sdk_obj->comprobante_nuevo(  $tusfacturas_sdk_entidades->comprobante($comprobante_data) , 
                                              $tusfacturas_sdk_entidades->comprobante_cliente($cliente_data)     
                                           );
+					  
+					  
+
+
+   // ===== Controlo si hay error =====
+
+   if (!$tusfacturas_sdk_obj->hay_error($response)) {
+            echo "<p>
+                      Comprobante generado correctamente:<br />
+                      CAE: ".$response->cae. " (Vencimiento: ".$response->cae_vto. " ) <br />
+                      Factura PDF: ".$response->comprobante_pdf_url. "
+                  </p>";
+
+   }else{
+            echo "<p>
+                      Se han encontrado los siguientes errores:<br />
+                       ".implode("<br />",$response->errores). "
+                  </p>";
+   }
+   					  
+					  
                                           
 ```
