@@ -10,12 +10,12 @@
  * =======================================================================
  * Class for tusfacturas.com.ar
  * =======================================================================
- * 
+ * SDK Version:    1.0   
+ * last-update:    2018-06-19
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 
  * @author:         Verónica Osorio para VOUSYS.com 
- * @last-update:    2018-06-19
  * 
  * METODOS incluidos:
  *         
@@ -57,7 +57,7 @@ class tusfacturas_sdk {
 
     var $debug;               // true / false para ir recibiendo dumps
 
-
+     
     function _construct($apikey,$apitoken,$usertoken) {
        
        $this->json_data        = "";
