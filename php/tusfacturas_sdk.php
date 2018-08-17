@@ -135,46 +135,7 @@ class tusfacturas_sdk {
         return($resultado);
     }
 
-
-    /****************************************************************************************************************
-     *
-     * FUNCIONALIDAD: 
-     *                 Mediante éste método podrás consultar si los servicios de AFIP se encuentran funcionando 
-     *                 correctamente y/o si nuestra plataforma tiene que notificarte algún evento.
-     *
-     * DOCUMENTACION: 
-     *                https://tusfacturas.gitbook.io/api-factura-electronica-afip/estado-de-los-servicios-afip
-     * 
-     * PARAMETROS: 
-     *               ninguno
-     * RESPUESTA:
-     *     @return object $resultado
-     *
-     * @last-update  2018-06-18
-     *************************************************************************************************************** */
-
-
-    function estado_servicios() {
-
-        // Credenciales de acceso
-
-        $data["apitoken"]   = $this->apitoken;
-        $data["apikey"]     = $this->apikey;
-        $data["usertoken"]  = $this->usertoken;
-       
-       // Si habilito debug, dump del array
-        if ($this->debug)         $this->dump($data); 
-
-        // Encodeo la data
-        $this->json_data    = json_encode ($data);
-
-        // Do API CALL
-        $resultado          = $this->api_call("estado_servicios/alertas");
-
-        return($resultado);
-    }
-
-
+ 
     /****************************************************************************************************************
      *
      * FUNCIONALIDAD: 
