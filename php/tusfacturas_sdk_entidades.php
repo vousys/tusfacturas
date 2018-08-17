@@ -15,7 +15,7 @@
  * Encoding:       UTF-8  
  * 
  * @author:         Verónica Osorio para VOUSYS.com 
- * @last-update:    2018-06-19
+ * @last-update:    2018-08-18
  * 
  * 
  * METODOS INCLUIDOS:
@@ -61,6 +61,14 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     periodo_facturado_hasta    Campo fecha. Contenido opcional. Formato esperado: dd/mm/aaaa.
                                                     rubro            Campo alfanumérico. Longitud máxima 255 caracteres. Indica el rubro al cual pertenecerá el comprobante. Ésta información no saldrá impresa en el comprobante. 
                                                     rubro_grupo_contable    Campo alfanumérico. Longitud máxima 255 caracteres. Indica el grupo contable al que pertenece el rubro. Ésta información no saldrá impresa en el comprobante. 
+                                                    
+
+                                                    abono            Campo alfabetico,  Longitud 1 caracter. Valores esperados: S o N
+                                                    abono_frecuencia Campo numerico, indica cada que cantidad de meses se va a repetir ese abono.
+                                                    abono_hasta      Campo fecha. Formato mm/yyyy. Indica hasta que mes y año se va a ejecutar el abono
+                                                    abono_actualiza_precios  Campo alfabetico,  Longitud 1 caracter. Valores esperados: S o N. Indica si se actualiza el precio de los productos facturados en cada abono que se cree.
+
+
                                                     detalle          Lista de conceptos a facturar. Objeto JSON Según estructura que se detalla en la documentacion
                                                     fex              Solo para comprobantes de tipo E. Según estructura detallada en la documentacion de Factura electronica de exportacion". 
                                                     bonificacion     Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor aplicado en concepto de bonificación sin IVA Ejemplo: 12.67. Tener en cuenta para el cálculo que la bonificación se aplica sobre el primer subtotal SIN IVA y se lo gravará con el importe de IVA que le corresponda. 
@@ -75,7 +83,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      * RESPUESTA:
      *     @return object  $comprobante     El array requerido para generar un comprobante.
      *
-     * @last-update  2018-05-19 
+     * @last-update  2018-08-17 
      *************************************************************** */
 
 
@@ -100,6 +108,15 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
 
             // Detalle de comprobante
             $comprobante["detalle"]           = $comprobante_data["detalle"]; 
+
+ 
+            // ABONOS
+            $comprobante["abono"]             =  ( $comprobante_data["abono"] == "S" ? 1 : 2);
+            $comprobante["abono_frecuencia"]  =  ( intval($comprobante_data["abono_frecuencia"]) == 0 ? 1 : $comprobante_data["abono_frecuencia"] ) ;
+            $comprobante["abono_hasta"]       =  ( trim($comprobante_data["abono_hasta"]) == '' ? date('m/Y', strtotime('+1 month')) : (strlen($comprobante_data["abono_hasta"]) == 10 ?  substr($comprobante_data["abono_hasta"],3, 7)  : $comprobante_data["abono_hasta"] )   );
+            $comprobante["abono_actualiza_precios"] = ( $comprobante_data["abono_actualiza_precios"] == "S" ? 1 : 2);
+            // ABONOS
+
 
             // totales
             $comprobante["bonificacion"]      = doubleval($comprobante_data["bonificacion"]); 
@@ -180,12 +197,13 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                         cantidad         Campo numérico con 2 decimales. Separador de decimales: punto. Ejemplo: 1.50 
                                         afecta_stock     Campo alfanumérico de 1 posición. Valores posibles: "S" (si), "N" (no) Ejemplo: S 
                                         producto         Según estructura de producto 
+                                        actualiza_precio Campo alfanumérico de 1 posición. Valores posibles: "S" (si), "N" (no) Ejemplo: S 
                                         leyenda          Campo alfanumérico. Longitud máxima 100 caracteres. Contenido opcional. Será una descripción que acompañe al producto. Ejemplo: Blanca, cepillada 
      *
      * RESPUESTA:
      *     @return object  $producto     El array requerido
      *
-     * @last-update  2018-05-19 
+     * @last-update  2018-08-17 
      *************************************************************** */
 
 
@@ -197,7 +215,8 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                     "cantidad"         => $parametros["cantidad"],
                                     "afecta_stock"     => (trim($parametros["afecta_stock"]) != '' ? $parametros["afecta_stock"] : "N"),
                                     "leyenda"          => utf8_encode( $parametros["leyenda"]),
-                                    "producto"         => $parametros["producto"]
+                                    "producto"         => $parametros["producto"],
+                                    "actualiza_precio" => (trim($parametros["actualiza_precio"]) == '' ? "N"  : $parametros["actualiza_precio"])
                                 );
              
             }else{
@@ -205,6 +224,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                     "cantidad"         => 0,
                                     "afecta_stock"     => "N",
                                     "leyenda"          => "",
+                                    "actualiza_precio" => "N" ,
                                     "producto"         => array()
                                 );
            }
