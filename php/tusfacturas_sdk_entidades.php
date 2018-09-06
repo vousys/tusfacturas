@@ -53,7 +53,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     tipo            Campo alfabético según tabla de referencia de Tipos de comprobantes(***).  
                                                     operacion       Campo alfanumérico. Longitud 1 caracter. Indica si envia una factura de venta (V) o de compra (C). Valores Permitidos: V, C Ejemplo: V 
                                                     idioma          Campo numérico. Longitud 1 caracter. Indica el idioma en que se imprimira el PDF del comprobante. Valores Permitidos: 1 = Español, 2= Ingles  
-                                                    punto_venta     Campo numérico entero. Longitud máxima 4 digitos. 
+                                                    punto_venta     Campo numérico entero. Longitud máxima 5 digitos. 
                                                     moneda          Campo alfanumérico de 3 Digitos según tabla de referencia de Monedas .
                                                     cotizacion      Campo numérico con 2 decimales. Puede obtener la cotización del día según AFIP desde nuestro método de consulta de cotización Ejemplo: 15.20 
                                                     numero           El numero del comprobante a generar. Campo numérico entero. Longitud máxima 8 digitos. La numeración será validada internamente previa generación del comprobante contra AFIP. Ejemplo: 4567
