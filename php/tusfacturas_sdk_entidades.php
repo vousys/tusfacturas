@@ -31,7 +31,7 @@ include_once "tusfacturas_sdk.php";
 
 class tusfacturas_sdk_entidades extends tusfacturas_sdk{
 
-    function _construct() {
+    function __construct() {
         //
     }    
 
