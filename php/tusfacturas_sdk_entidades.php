@@ -68,6 +68,9 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     abono_hasta      Campo fecha. Formato mm/yyyy. Indica hasta que mes y año se va a ejecutar el abono
                                                     abono_actualiza_precios  Campo alfabetico,  Longitud 1 caracter. Valores esperados: S o N. Indica si se actualiza el precio de los productos facturados en cada abono que se cree.
 
+                                                    comprobantes_asociados  array con los comprobantes asociados a éste comprobante. Se utiliza para las NC/ND en gral        
+                                                    rg_especiales            array con otros datos requeridos segun la RG a la que aplica la empresa       
+
 
                                                     detalle          Lista de conceptos a facturar. Objeto JSON Según estructura que se detalla en la documentacion
                                                     fex              Solo para comprobantes de tipo E. Según estructura detallada en la documentacion de Factura electronica de exportacion". 
@@ -75,9 +78,15 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     leyenda_gral     Campo alfanumérico. Longitud máxima 255 caracteres. Contenido opcional. Es una leyenda general que saldrá impresa en el bloque central de productos del comprobante Ejemplo: Aplica plan 12 cuotas sin interes. 
                                                     comentario:      Campo alfanumerico, opcional. Longitud máxima: 255 caracteres. Éste campo no saldrá impreso en la factura.
                                                     percepciones_iibb    Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario de la percepción de ingresos brutos realizada Ejemplo: 142.67 
+                                                    percepciones_iibb_base    Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario  de la base imponible de la percepción de ingresos brutos realizada Ejemplo: 142.67 
+                                                    percepciones_iibb_alicuota    Campo numérico con 2 decimales. separador de decimales: punto. Indica la alicuota de la percepción de ingresos brutos realizada Ejemplo: 142.67 
                                                     percepciones_iva     Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario de la percepción de IVA realizada Ejemplo: 42.67 
+                                                    percepciones_iva_base    Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario  de la base imponible de la percepción de IVA realizada Ejemplo: 142.67 
+                                                    percepciones_iva_alicuota    Campo numérico con 2 decimales. separador de decimales: punto. Indica la alicuota de la percepción de IVA realizada Ejemplo: 142.67 
+                                                    impuestos_internos     Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario del impuesto interno aplicado Ejemplo: 42.67 
+                                                    impuestos_internos_base    Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario  de la base imponible del impuesto interno aplicado Ejemplo: 142.67 
+                                                    impuestos_internos_alicuota    Campo numérico con 2 decimales. separador de decimales: punto. Indica la alicuota del  impuesto interno aplicado Ejemplo: 142.67 
                                                     exentos          Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario en concepto de exentos. Solo para comprobantes A y M Ejemplo: 72.67 
-                                                    nogravados       Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario en concepto de no gravados. Solo para comprobantes A y M Ejemplo: 62.67 impuestos_internos    Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario en concepto de impuestos internos Ejemplo: 2.67 
                                                     total            Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario de la sumatoria de conceptos incluyendo IVA e impuestos. Ejemplo: 12452.67
      *  
      * RESPUESTA:
@@ -118,16 +127,26 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
             // ABONOS
 
 
+            // Otros datos asociados
+            $comprobante["comprobantes_asociados"] =  $comprobante_data["comprobantes_asociados"];   
+            $comprobante["rg_especiales"]          =  $comprobante_data["rg_especiales"];   
+
+
             // totales
             $comprobante["bonificacion"]      = doubleval($comprobante_data["bonificacion"]); 
             $comprobante["leyenda_gral"]      = utf8_encode( $comprobante_data["leyenda_gral"]); 
             $comprobante["comentario"]        = utf8_encode($comprobante_data["comentario"]); 
             $comprobante["percepciones_iibb"] = doubleval($comprobante_data["percepciones_iibb"]); 
+            $comprobante["percepciones_iibb_base"] = doubleval($comprobante_data["percepciones_iibb_base"]); 
+            $comprobante["percepciones_iibb_alicuota"] = doubleval($comprobante_data["percepciones_iibb_alicuota"]); 
             $comprobante["percepciones_iva"]  = doubleval($comprobante_data["percepciones_iva"]); 
+            $comprobante["percepciones_iva_base"]  = doubleval($comprobante_data["percepciones_iva_base"]); 
+            $comprobante["percepciones_iva_alicuota"]  = doubleval($comprobante_data["percepciones_iva_alicuota"]); 
+            $comprobante["impuestos_internos"]  = doubleval($comprobante_data["impuestos_internos"]); 
+            $comprobante["impuestos_internos_base"]  = doubleval($comprobante_data["impuestos_internos_base"]); 
+            $comprobante["impuestos_internos_alicuota"]  = doubleval($comprobante_data["impuestos_internos_alicuota"]); 
             $comprobante["exentos"]           = doubleval($comprobante_data["exentos"]); 
-            $comprobante["nogravados"]        = doubleval($comprobante_data["nogravados"]); 
             $comprobante["total"]             = round(doubleval($comprobante_data["total"]),3); 
-              
 
              return($comprobante);
 
@@ -195,6 +214,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      *     @param object $parametros     Todos los datos requeridos para armar el producto:
      *     
                                         cantidad         Campo numérico con 2 decimales. Separador de decimales: punto. Ejemplo: 1.50 
+                                        bonificacion_porcentaje         Campo numérico con 2 decimales. Separador de decimales: punto. Ejemplo: 1.50 
                                         afecta_stock     Campo alfanumérico de 1 posición. Valores posibles: "S" (si), "N" (no) Ejemplo: S 
                                         producto         Según estructura de producto 
                                         actualiza_precio Campo alfanumérico de 1 posición. Valores posibles: "S" (si), "N" (no) Ejemplo: S 
@@ -213,6 +233,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
 
                         $item = array(
                                     "cantidad"         => $parametros["cantidad"],
+                                    "bonificacion_porcentaje" => $parametros["bonificacion_porcentaje"],
                                     "afecta_stock"     => (trim($parametros["afecta_stock"]) != '' ? $parametros["afecta_stock"] : "N"),
                                     "leyenda"          => utf8_encode( $parametros["leyenda"]),
                                     "producto"         => $parametros["producto"],
@@ -225,6 +246,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                     "afecta_stock"     => "N",
                                     "leyenda"          => "",
                                     "actualiza_precio" => "N" ,
+                                    "bonificacion_porcentaje" => 0,
                                     "producto"         => array()
                                 );
            }
@@ -275,6 +297,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                     "lista_precios" => utf8_encode(trim($parametros["lista_precios"])   != '' ? $parametros["lista_precios"] : 'Lista general'),
                     "precio_unitario_sin_iva" => round($parametros["precio_unitario_sin_iva"] ,3) ,
                     "alicuota"      => $parametros["alicuota"],
+                    "impuestos_internos_alicuota" => $parametros["impuestos_internos_alicuota"],
                     "unidad_medida" => ( intval($parametros["unidad_medida"]) != 0 ? $parametros["unidad_medida"] : 7)  
                 );
 
