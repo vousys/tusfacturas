@@ -8,7 +8,7 @@
  *
  * 
  * =======================================================================
- * Class for tusfacturas.com.ar
+ * Class for tusfacturas.app
  * =======================================================================
  * SDK Version:    1.0   
  * last-update:    2018-06-19
@@ -40,7 +40,7 @@
  */
 
 const TUSFACTURAS_API_VERSION     = 2;
-const TUSFACTURAS_PATH            = "https://www.tusfacturas.com.ar/app/api/v".TUSFACTURAS_API_VERSION."/";
+const TUSFACTURAS_PATH            = "https://www.tusfacturas.app/app/api/v".TUSFACTURAS_API_VERSION."/";
 
 
 include "tusfacturas_sdk_entidades.php";
@@ -48,9 +48,9 @@ include "tusfacturas_sdk_entidades.php";
 
 class tusfacturas_sdk {
 
-    var $apitoken;            // Tus credenciales de acceso. Registrate en tusfacturas.com.ar y obtenelas desde Mis Cuits
-    var $apikey;              // Tus credenciales de acceso. Registrate en tusfacturas.com.ar y obtenelas desde Mis Cuits  
-    var $usertoken;           // Tus credenciales de acceso. Registrate en tusfacturas.com.ar y obtenelas desde Mis Cuits
+    var $apitoken;            // Tus credenciales de acceso. Registrate en tusfacturas.app y obtenelas desde Mis Cuits
+    var $apikey;              // Tus credenciales de acceso. Registrate en tusfacturas.app y obtenelas desde Mis Cuits  
+    var $usertoken;           // Tus credenciales de acceso. Registrate en tusfacturas.app y obtenelas desde Mis Cuits
  
     var $json_data;           // JSON a enviar a la API.   (Sirve por si luego quiero guardar lo enviado a modo de log) 
     var $json_respuesta;      // JSON devuelto por la API. (Sirve por si luego quiero guardar lo enviado a modo de log) 
@@ -73,9 +73,9 @@ class tusfacturas_sdk {
      *                 Configura las KEYS de tu cuenta
      * PARAMETROS: 
      * ------------
-     *    @param string   $apikey                // Tus credenciales de acceso. Registrate en tusfacturas.com.ar y obtenelas desde Mis Cuits
-     *    @param string   $apitoken                // Tus credenciales de acceso. Registrate en tusfacturas.com.ar y obtenelas desde Mis Cuits
-     *    @param string   $usertoken             // Tus credenciales de acceso. Registrate en tusfacturas.com.ar y obtenelas desde Mis Cuits
+     *    @param string   $apikey                // Tus credenciales de acceso. Registrate en tusfacturas.app y obtenelas desde Mis Cuits
+     *    @param string   $apitoken                // Tus credenciales de acceso. Registrate en tusfacturas.app y obtenelas desde Mis Cuits
+     *    @param string   $usertoken             // Tus credenciales de acceso. Registrate en tusfacturas.app y obtenelas desde Mis Cuits
      * 
      * RESPUESTA:
          none
