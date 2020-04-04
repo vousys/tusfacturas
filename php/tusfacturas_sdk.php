@@ -11,7 +11,7 @@
  * Class for tusfacturas.app
  * =======================================================================
  * SDK Version:    1.0   
- * last-update:    2018-06-19
+ * last-update:    2020-04-04
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 
@@ -113,15 +113,8 @@ class tusfacturas_sdk {
 
     function comprobante_nuevo($comprobante_data,$cliente_data) {
 
-        // Credenciales de acceso
-
-        $data["apitoken"]   = $this->apitoken;
-        $data["apikey"]     = $this->apikey;
-        $data["usertoken"]  = $this->usertoken;
-
-        // Datos del comprobante
-        $data["comprobante"]= $comprobante_data; 
-        $data["cliente"]    = $cliente_data; 
+        // preparo la info a enviar
+        $data               = $this->request_preparar($comprobante_data,$cliente_data) ;
 
         // Si habilito debug, dump del array
         if ($this->debug)         $this->dump($data); 
@@ -135,6 +128,96 @@ class tusfacturas_sdk {
         return($resultado);
     }
 
+
+    /****************************************************************************************************************
+     *
+     * FUNCIONALIDAD: 
+     * ---------------
+     *                 Mediante éste método me prepara el request a enviar
+     *
+     * DOCUMENTACION: 
+     * --------------- 
+     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
+     * 
+     * PARAMETROS: 
+     * ------------
+     *    @param objeto   $comprobante_data       segun tusfacturas_sdk_entidades->comprobante();
+     *    @param objeto   $cliente_data           segun tusfacturas_sdk_entidades->comprobante_cliente();  
+     * 
+     * RESPUESTA:
+         @return object $data
+     *
+     * @last-update  2020-04-20
+     *************************************************************************************************************** */
+
+
+    function request_preparar($comprobante_data,$cliente_data) {
+
+        // Credenciales de acceso
+
+        $data["apitoken"]   = $this->apitoken;
+        $data["apikey"]     = $this->apikey;
+        $data["usertoken"]  = $this->usertoken;
+
+        // Datos del comprobante
+        $data["comprobante"]= $comprobante_data; 
+        $data["cliente"]    = $cliente_data; 
+ 
+
+        return($data);
+    }
+
+
+
+
+    /****************************************************************************************************************
+     *
+     * FUNCIONALIDAD: 
+     * ---------------
+     *                 Mediante éste método podrás generar comprobantes de venta o de compra.
+     *
+     * DOCUMENTACION: 
+     * --------------- 
+     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
+     * 
+     * PARAMETROS: 
+     * ------------
+     *    @param objeto   $requests_preparados     un array con la info que se requiere para generar un comprobante 
+     *                                             se debe iterar el metodo "request_preparar" 
+     *                                             tantas veces como sea necesario para generar cada request
+     *                                                  ->request_preparar($comprobante_data,$cliente_data) ;
+
+
+     * 
+     * RESPUESTA:
+         @return object $resultado
+     *
+     * @last-update  2020-04-04
+     *************************************************************************************************************** */
+
+
+    function comprobante_lotes($requests_preparados) {
+
+        // Credenciales de acceso
+
+        $data["apitoken"]   = $this->apitoken;
+        $data["apikey"]     = $this->apikey;
+        $data["usertoken"]  = $this->usertoken;
+
+        // Datos del comprobante
+        $data["requests"]   = $requests_preparados; 
+
+        // Si habilito debug, dump del array
+        if ($this->debug)         $this->dump($data); 
+
+        // Encodeo la data
+        $this->json_data    = json_encode ($data);
+
+        // Do API CALL
+        $resultado          = $this->api_call("facturacion/lotes");
+
+        return($resultado);
+    }
  
     /****************************************************************************************************************
      *
