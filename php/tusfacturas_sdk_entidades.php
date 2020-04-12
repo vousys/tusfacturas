@@ -376,8 +376,7 @@ function tabla_referencia_provincia($provincia ) {
         case "NEUQUEN":
             return 15;
             break;
-        case "Otro":
-        default:
+        case "OTRO":
             return 25;
             break;
         case "RIO NEGRO":
@@ -409,8 +408,7 @@ function tabla_referencia_provincia($provincia ) {
             break;
 
         default:
-            return 26;
-            break;
+            return 26; 
 
     }
 }
