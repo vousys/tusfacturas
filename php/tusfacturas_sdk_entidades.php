@@ -43,7 +43,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      *                 creacion de un nuevo comprobante
      *         
      * DOCUMENTACION:  
-     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-detalle-de-conceptos
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-detalle-de-conceptos
      *                                   
      * PARAMETROS:
      *
@@ -156,7 +156,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      *                 creacion de un nuevo comprobante
      *         
      * DOCUMENTACION:  
-     *                https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-cliente
+     *                https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-cliente
      *                                   
      * PARAMETROS:
      *
@@ -188,7 +188,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                     "email"          => $parametros["email"],
                     "domicilio"      => utf8_encode($parametros["domicilio"]),
                     "documento_nro"  => $parametros["documento_nro"],
-                    "provincia"      => (intval($parametros["provincia"])   != 0  ? $parametros["provincia"] : 1),
+                    "provincia"      => (intval($parametros["provincia"])   != 0  ? $parametros["provincia"] : $this->tabla_referencia_provincia($parametros["provincia"]) ),
                     "envia_por_mail" => (trim($parametros["envia_por_mail"])!= '' ? $parametros["envia_por_mail"] : "N"),
                     "condicion_pago" => intval($parametros["condicion_pago"]),
                     "condicion_pago_otra" => intval($parametros["condicion_pago_otra"]),
@@ -207,7 +207,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      *                 La entidad item, es parte del detalle de conceptos del comprobante    
      *         
      * DOCUMENTACION:  
-     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-detalle-de-conceptos
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-detalle-de-conceptos
      *                                   
      * PARAMETROS:
      *
@@ -266,7 +266,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      *                 del detalle de conceptos del comprobante    
      *         
      * DOCUMENTACION:  
-     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-concepto-producto
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante#estructura-de-concepto-producto
      *                                   
      * PARAMETROS:
      *
@@ -298,14 +298,158 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                     "unidad_bulto"  => ( intval($parametros["unidad_bulto"]) != 0 ? $parametros["unidad_bulto"] : 1),
                     "lista_precios" => utf8_encode(trim($parametros["lista_precios"])   != '' ? $parametros["lista_precios"] : 'Lista general'),
                     "precio_unitario_sin_iva" => round($parametros["precio_unitario_sin_iva"] ,3) ,
-                    "alicuota"      => $parametros["alicuota"],
-                    "impuestos_internos_alicuota"      => $parametros["impuestos_internos_alicuota"],
+                    "alicuota"      => doubleval($this->tabla_referencia_alicuota($parametros["alicuota"])),
+                    "impuestos_internos_alicuota"      => doubleval($parametros["impuestos_internos_alicuota"]),
                     "actualiza_precio" => $parametros["actualiza_precio"],
                     "unidad_medida" => ( intval($parametros["unidad_medida"]) != 0 ? $parametros["unidad_medida"] : 7)  
                 );
 
                 return($producto);
 
+    }
+
+
+
+    /************************************************************** 
+     *
+     * FUNCIONALIDAD:  Me devuelve la provincia que corresponde 
+     *                 segun tabla de referencia  
+     *         
+     * DOCUMENTACION:  
+     *                 https://developers.tusfacturas.app/tablas-de-referencia#provincias
+     *                                   
+     * PARAMETROS:
+     *
+     *     @param       string      el nombre de la provincia
+     * RESPUESTA:
+     *     @return     number       el nro asociado a esa provincia
+     *
+     * @last-update  2020-04-12 
+     *************************************************************** */
+
+function tabla_referencia_provincia($provincia ) {
+
+
+    switch(strtoupper(trim($provincia ))) {
+        case "BUENOS AIRES":
+            return 2;
+            break;
+        case "CATAMARCA":
+            return 3;
+            break;
+        case "CHACO":
+            return 4;
+            break;
+        case "CHUBUT":
+            return 5;
+            break;
+        case "CIUDAD AUTONOMA DE BUENOS AIRES":
+            return 1;
+            break;
+        case "CORDOBA":
+            return 6;
+            break;
+        case "CORRIENTES":
+            return 7;
+            break;
+        case "ENTRE RIOS":
+            return 8;
+            break;
+        case "FORMOSA":
+            return 9;
+            break;
+        case "JUJUY":
+            return 10;
+            break;
+        case "LA PAMPA":
+            return 11;
+            break;
+        case "LA RIOJA":
+            return 12;
+            break;
+        case "MENDOZA":
+            return 13;
+            break;
+        case "MISIONES":
+            return 14;
+            break;
+        case "NEUQUEN":
+            return 15;
+            break;
+        case "Otro":
+        default:
+            return 25;
+            break;
+        case "RIO NEGRO":
+            return 16;
+            break;
+        case "SALTA":
+            return 17;
+            break;
+        case "SAN JUAN":
+            return 18;
+            break;
+        case "SAN LUIS":
+            return 19;
+            break;
+        case "SANTA CRUZ":
+            return 20;
+            break;
+        case "SANTA FE":
+            return 21;
+            break;
+        case "SANTIAGO DEL ESTERO":
+            return 22;
+            break;
+        case "TIERRA DEL FUEGO":
+            return 23;
+            break;
+        case "TUCUMAN":
+            return 24;
+            break;
+
+        default:
+            return 26;
+            break;
+
+    }
+}
+
+
+    /************************************************************** 
+     *
+     * FUNCIONALIDAD:  Me devuelve la alicuota que corresponde 
+     *                 segun tabla de referencia  
+     *         
+     * DOCUMENTACION:  
+     *                 https://developers.tusfacturas.app/tablas-de-referencia#alicuotas-de-iva
+     *                                   
+     * PARAMETROS:
+     *
+     *     @param           string    alicuota            Indica la alicuota de IVA con la que grava ese producto. 
+     *                                                    Valores Permitidos: segun tabla de referencia https://developers.tusfacturas.app/tablas-de-referencia#alicuotas-de-iva
+     *
+     * RESPUESTA:
+     *     @return          number    alicuota
+     *
+     * @last-update  2020-04-12 
+     *************************************************************** */
+
+    function tabla_referencia_alicuota($alicuota) {
+
+        $alicuota = str_replace("%","",$alicuota);
+
+        switch ($alicuota) {
+            case "IVA EXENTO":  case "EXENTO":
+                return (-1);
+                break;
+            case "IVA NO GRAVADO": case "NO GRAVADO":
+                return (-2);
+                break;
+            default:
+                return doubleval($alicuota_porcentaje);
+                break;
+            }
     }
 
 

@@ -97,7 +97,7 @@ class tusfacturas_sdk {
      *
      * DOCUMENTACION: 
      * --------------- 
-     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante
      * 
      * PARAMETROS: 
      * ------------
@@ -137,7 +137,7 @@ class tusfacturas_sdk {
      *
      * DOCUMENTACION: 
      * --------------- 
-     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante
      * 
      * PARAMETROS: 
      * ------------
@@ -178,7 +178,7 @@ class tusfacturas_sdk {
      *
      * DOCUMENTACION: 
      * --------------- 
-     *                 https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante
      * 
      * PARAMETROS: 
      * ------------
@@ -226,7 +226,7 @@ class tusfacturas_sdk {
      *                 correctamente y/o si nuestra plataforma tiene que notificarte algún evento.
      *
      * DOCUMENTACION: 
-     *                https://tusfacturas.gitbook.io/api-factura-electronica-afip/estado-de-los-servicios-afip
+     *                https://developers.tusfacturas.app/api-factura-electronica-afip/estado-de-los-servicios-afip
      * 
      * PARAMETROS: 
      *               ninguno
@@ -264,12 +264,12 @@ class tusfacturas_sdk {
      *                 Mediante éste método podrás consultar la próxima numeración de un tipo de comprobante.
      *
      * DOCUMENTACION: 
-     *                https://tusfacturas.gitbook.io/api-factura-electronica-afip/consultar-numeracion-de-comprobantes.
+     *                https://developers.tusfacturas.app/api-factura-electronica-afip/consultar-numeracion-de-comprobantes.
      * 
      * PARAMETROS: 
      *     @param object $comprobante      Un array formado de la siguiente manera:
      * 
-     *                                 $comprobante["tipo"]         = Segun tabla referencia: https://tusfacturas.gitbook.io/api-factura-electronica-afip/tablas-de-referencia#tipos-de-comprobantes
+     *                                 $comprobante["tipo"]         = Segun tabla referencia: https://developers.tusfacturas.app/api-factura-electronica-afip/tablas-de-referencia#tipos-de-comprobantes
      *                                 $comprobante["operacion"]    = "V" o "C" segun corresponda para ventas o compras
      *                                 $comprobante["punto_venta"]  = El punto de venta asociado a tu CUIT
      * RESPUESTA:

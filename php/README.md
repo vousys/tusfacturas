@@ -2,7 +2,7 @@
 
 Mediante nuestra API podrás conectar tu sistema de gestión actual, con nuestra plataforma y emitir facturas electrónicas AFIP válidas. Estamos homologados por AFIP.
 
-Encontrá toda la documentación aquí: https://tusfacturas.gitbook.io/api-factura-electronica-afip.
+Encontrá toda la documentación aquí: https://developers.tusfacturas.app/
 Registrate en: https://www.tusfacturas.app/
 
 
@@ -25,7 +25,7 @@ El SDK soporta PHP 5 o superior
 
 
 ### Estado de los servicios:
-Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/estado-de-los-servicios-afip
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/estado-de-los-servicios-afip
 
 ```
    $tusfacturas_sdk_obj  = new tusfacturas_sdk();
@@ -36,7 +36,7 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/esta
 
 
 ### Consulta de numeración de comprobantes:
-Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/consultar-numeracion-de-comprobantes
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/consultar-numeracion-de-comprobantes
 
 ```
    $tusfacturas_sdk_obj  = new tusfacturas_sdk();
@@ -78,7 +78,7 @@ Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/cons
 
 
 ### Generar Nuevo Comprobante:
-Documentación: https://tusfacturas.gitbook.io/api-factura-electronica-afip/facturacion-nuevo-comprobante
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante
 
 ```
    $tusfacturas_sdk_obj          = new tusfacturas_sdk();
