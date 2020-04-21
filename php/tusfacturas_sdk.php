@@ -58,7 +58,7 @@ class tusfacturas_sdk {
     var $debug;               // true / false para ir recibiendo dumps
 
      
-    function __construct($apikey,$apitoken,$usertoken) {
+    function __construct() {
        
        $this->json_data        = "";
        $this->json_respuesta   = "";
