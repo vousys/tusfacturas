@@ -186,7 +186,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                     "documento_tipo" => (trim($parametros["documento_tipo"]) == '' ? "DNI" : $parametros["documento_tipo"] ) ,    
                     "razon_social"   => utf8_encode($parametros["razon_social"]),
                     "email"          => $parametros["email"],
-                    "codigo"         => $parametros["codigo"],
+                    "codigo"         => trim($parametros["codigo"]),
                     "domicilio"      => utf8_encode($parametros["domicilio"]),
                     "documento_nro"  => $parametros["documento_nro"],
                     "provincia"      => (intval($parametros["provincia"])   != 0  ? $parametros["provincia"] : $this->tabla_referencia_provincia($parametros["provincia"]) ),
@@ -446,7 +446,7 @@ function tabla_referencia_provincia($provincia ) {
                 return (-2);
                 break;
             default:
-                return doubleval($alicuota_porcentaje);
+                return doubleval($alicuota);
                 break;
             }
     }
