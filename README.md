@@ -1,7 +1,14 @@
 
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
-[![Latest Stable Version](https://poser.pugx.org/icamys/php-sitemap-generator/v/stable.png)](https://packagist.org/packages/icamys/php-sitemap-generator)
+[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/vousys/tusfacturas/releases/)
+[![GitHub tag](https://img.shields.io/github/tag/Naereen/StrapDown.js.svg)](https://github.com/vousys/tusfacturas//tags/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/vousys/tusfacturas/graphs/commit-activity)
+[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/vousys/tusfacturas/issues/)
+[![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://developers.tusfacturas.app/)
+![Tweeting](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/vousys/tusfacturas/)
+
 
 # TusFacturas.app - API Factura electrónica AFIP - SDK
 
