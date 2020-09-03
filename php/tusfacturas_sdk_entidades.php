@@ -112,7 +112,6 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
             $comprobante["moneda"]           = (trim($comprobante_data["moneda"])        == '' ? "PES" : $comprobante_data["moneda"]);
             $comprobante["cotizacion"]       = (intval($comprobante_data["cotizacion"])  == 0  ? 1 : $comprobante_data["cotizacion"]);
             $comprobante["numero"]           = (trim($comprobante_data["numero"])           == '' ? 0 : $comprobante_data["numero"]);
-            $comprobante["vencimiento"]      = $comprobante_data["vencimiento"];
             $comprobante["periodo_facturado_desde"] = $comprobante_data["periodo_facturado_desde"];
             $comprobante["periodo_facturado_hasta"] = $comprobante_data["periodo_facturado_hasta"];
             $comprobante["vencimiento"]       = $comprobante_data["vencimiento"];
