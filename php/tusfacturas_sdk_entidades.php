@@ -15,7 +15,7 @@
  * Encoding:       UTF-8  
  * 
  * @author:         Verónica Osorio para VOUSYS.com 
- * @last-update:    2020-04-04
+ * @last-update:    2020-09-03
  * 
  * 
  * METODOS INCLUIDOS:
@@ -59,6 +59,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     numero           El numero del comprobante a generar. Campo numérico entero. Longitud máxima 8 digitos. La numeración será validada internamente previa generación del comprobante contra AFIP. Ejemplo: 4567
                                                     periodo_facturado_desde     Campo fecha. Contenido opcional. Formato esperado: dd/mm/aaaa. 
                                                     periodo_facturado_hasta    Campo fecha. Contenido opcional. Formato esperado: dd/mm/aaaa.
+                                                    vencimiento     Campo fecha. Contenido opcional. Formato esperado: dd/mm/aaaa. 
                                                     rubro            Campo alfanumérico. Longitud máxima 255 caracteres. Indica el rubro al cual pertenecerá el comprobante. Ésta información no saldrá impresa en el comprobante. 
                                                     rubro_grupo_contable    Campo alfanumérico. Longitud máxima 255 caracteres. Indica el grupo contable al que pertenece el rubro. Ésta información no saldrá impresa en el comprobante. 
                                                     
@@ -113,6 +114,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
             $comprobante["numero"]           = (trim($comprobante_data["numero"])           == '' ? 0 : $comprobante_data["numero"]);
             $comprobante["periodo_facturado_desde"] = $comprobante_data["periodo_facturado_desde"];
             $comprobante["periodo_facturado_hasta"] = $comprobante_data["periodo_facturado_hasta"];
+            $comprobante["vencimiento"]       = $comprobante_data["vencimiento"];
             $comprobante["rubro"]             = utf8_encode(trim($comprobante_data["rubro"])        == '' ? "Deudores Varios" : $comprobante_data["rubro"]); 
             $comprobante["rubro_grupo_contable"] = utf8_encode (trim($comprobante_data["rubro_grupo_contable"]) == '' ? "Ventas" : $comprobante_data["rubro_grupo_contable"]); 
 
