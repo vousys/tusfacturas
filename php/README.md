@@ -25,7 +25,7 @@ El SDK soporta PHP 5 o superior
 
 
 ### Estado de los servicios:
-Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/estado-de-los-servicios-afip
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-estado-de-los-servicios-afip
 
 ```
    $tusfacturas_sdk_obj  = new tusfacturas_sdk();
@@ -36,7 +36,7 @@ Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/
 
 
 ### Consulta de numeración de comprobantes:
-Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/consultar-numeracion-de-comprobantes
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-consultar-numeracion-de-comprobantes.
 
 ```
    $tusfacturas_sdk_obj  = new tusfacturas_sdk();
@@ -78,7 +78,7 @@ Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/
 
 
 ### Generar Nuevo Comprobante:
-Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip/facturacion-nuevo-comprobante
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante
 
 ```
    $tusfacturas_sdk_obj          = new tusfacturas_sdk();
