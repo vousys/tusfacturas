@@ -77,7 +77,7 @@ Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-
 
 
 
-### Generar Nuevo Comprobante:
+### Generar Nuevo Comprobante de tipo factura:
 Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante
 
 ```
@@ -91,7 +91,7 @@ Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-
    
    $cliente_data	=  array(
                           "documento_tipo" => "DNI",    
-                          "razon_social"   => "JUAN PÉREZ NIÑO",
+                          "razon_social"   => "JUAN PEREZ NIO",
                           "email"          => "email@email.com",
                           "domicilio"      => "Avenida Siempreviva 742",
                           "documento_nro"  => "12345678",
@@ -108,7 +108,7 @@ Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-
    
    $comprobante_data["tipo"] 		= "FACTURA B";
    $comprobante_data["punto_venta"] 	= "0001";
-   $comprobante_data["fecha"]		= "20/05/2018";
+   $comprobante_data["fecha"]		= date("d/m/Y");
    $comprobante_data["numero"]		= 20;
    // (Existen otros datos opcionales a enviar, consultar la documentación)
 
@@ -156,7 +156,203 @@ $comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detal
    if (!$tusfacturas_sdk_obj->hay_error($response)) {
             echo "<p>
                       Comprobante generado correctamente:<br />
-                      CAE: ".$response->cae. " (Vencimiento: ".$response->cae_vto. " ) <br />
+                      CAE: ".$response->cae. " (Vencimiento: ".$response->vencimiento_cae. " ) <br />
+                      Factura PDF: ".$response->comprobante_pdf_url. "
+                  </p>";
+
+   }else{
+            echo "<p>
+                      Se han encontrado los siguientes errores:<br />
+                       ".implode("<br />",$response->errores). "
+                  </p>";
+   }
+   					  
+					  
+                                          
+```
+
+### Generar Nuevo Comprobante de nota de débito detallando comprobantes asociados:
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante
+
+```
+   $tusfacturas_sdk_obj          = new tusfacturas_sdk();
+   $tusfacturas_sdk_entidades	 = new tusfacturas_sdk_entidades();
+   $tusfacturas_sdk_obj->set_keys( TUSFACTURAS_APIKEY, TUSFACTURAS_APITOKEN, TUSFACTURAS_USERTOKEN  );
+
+
+
+   // ===== Datos del cliente  =======
+   
+   $cliente_data	=  array(
+                          "documento_tipo" => "DNI",    
+                          "razon_social"   => "JUAN PEREZ NIO",
+                          "email"          => "email@email.com",
+                          "domicilio"      => "Avenida Siempreviva 742",
+                          "documento_nro"  => "12345678",
+                          "provincia"      => 1,
+                          "envia_por_mail" => "S",
+                          "condicion_pago" => 0,
+                          "condicion_iva"  => "CF" 
+                        );
+                                        
+                                          
+   // =====  Datos del comprobante a generar =====
+   
+   // Cabecera de la nota de debito
+   
+   $comprobante_data["tipo"] 		= "NOTA DE DEBITO B";
+   $comprobante_data["punto_venta"] 	= "0001";
+   $comprobante_data["fecha"]		= date("d/m/Y");
+   $comprobante_data["numero"]		= 20;
+   // (Existen otros datos opcionales a enviar, consultar la documentación)
+
+   // comprobantes asociados 
+   $comprobante_data["comprobantes_asociados"][]		=  $tusfacturas_sdk_entidades->comprobantes_asociados_detalle_item('03/03/2021', 'FACTURA B', '0003', '123', '1234567890') ;
+   $comprobante_data["comprobantes_asociados"][]		=  $tusfacturas_sdk_entidades->comprobantes_asociados_detalle_item('03/03/2021', 'FACTURA B', '0003', '124', '1234567890') ;
+ 
+
+   // Armo el detalle de los conceptos
+
+$comprobante_data["detalle"]     = array();
+$comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detalle_item(
+						    array (
+							  "cantidad" 		=> 1,
+							  "afecta_stock"  	=> "N",
+							  "leyenda"		=> "",
+							  "producto"		=> $tusfacturas_sdk_entidades->producto( 
+                                                                        array(
+                                                                              "descripcion" 	=> "HONORARIOS",
+                                                                              "unidad_bulto"    => 1,
+                                                                              "lista_precios"   => "Lista general",
+                                                                              "codigo"		=> "HON",	
+                                                                              "precio_unitario_sin_iva" => 100,
+                                                                              "alicuota"	=> 21,
+                                                                              "unidad_medida" 	=> 7
+                                                                           )
+                                                         )
+                                       )
+                                    );
+				    
+   // totales
+   
+   $comprobante_data["total"]	   = 121; 
+
+
+
+   // ===== Envio a generar el comprobante =====
+   
+   $response = $tusfacturas_sdk_obj->comprobante_nuevo(  
+   						$tusfacturas_sdk_entidades->comprobante($comprobante_data) , 
+                                             	$tusfacturas_sdk_entidades->comprobante_cliente($cliente_data)     
+                                          	);
+					  
+					  
+
+
+   // ===== Controlo si hay error =====
+
+   if (!$tusfacturas_sdk_obj->hay_error($response)) {
+            echo "<p>
+                      Comprobante generado correctamente:<br />
+                      CAE: ".$response->cae. " (Vencimiento: ".$response->vencimiento_cae. " ) <br />
+                      Factura PDF: ".$response->comprobante_pdf_url. "
+                  </p>";
+
+   }else{
+            echo "<p>
+                      Se han encontrado los siguientes errores:<br />
+                       ".implode("<br />",$response->errores). "
+                  </p>";
+   }
+   					  
+					  
+                                          
+```
+
+### Generar Nuevo Comprobante de nota de crédito indicando periodo asociados:
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante
+
+```
+   $tusfacturas_sdk_obj          = new tusfacturas_sdk();
+   $tusfacturas_sdk_entidades	 = new tusfacturas_sdk_entidades();
+   $tusfacturas_sdk_obj->set_keys( TUSFACTURAS_APIKEY, TUSFACTURAS_APITOKEN, TUSFACTURAS_USERTOKEN  );
+
+
+
+   // ===== Datos del cliente  =======
+   
+   $cliente_data	=  array(
+                          "documento_tipo" => "DNI",    
+                          "razon_social"   => "JUAN PEREZ NIO",
+                          "email"          => "email@email.com",
+                          "domicilio"      => "Avenida Siempreviva 742",
+                          "documento_nro"  => "12345678",
+                          "provincia"      => 1,
+                          "envia_por_mail" => "S",
+                          "condicion_pago" => 0,
+                          "condicion_iva"  => "CF" 
+                        );
+                                        
+                                          
+   // =====  Datos del comprobante a generar =====
+   
+   // Cabecera de la nota de credito
+   
+   $comprobante_data["tipo"] 		= "NOTA DE CREDITO B";
+   $comprobante_data["punto_venta"] 	= "0001";
+   $comprobante_data["fecha"]		= date("d/m/Y");
+   $comprobante_data["numero"]		= 220;
+   // (Existen otros datos opcionales a enviar, consultar la documentación)
+
+   // comprobantes asociados por periodo
+   $comprobante_data["comprobantes_asociados_periodo"]		=  $tusfacturas_sdk_entidades->comprobantes_asociados_periodo('03/03/2021', '10/03/2021' ) ;
+
+ 
+
+   // Armo el detalle de los conceptos
+
+$comprobante_data["detalle"]     = array();
+$comprobante_data["detalle"][]   = $tusfacturas_sdk_entidades->comprobante_detalle_item(
+						    array (
+							  "cantidad" 		=> 1,
+							  "afecta_stock"  	=> "N",
+							  "leyenda"		=> "",
+							  "producto"		=> $tusfacturas_sdk_entidades->producto( 
+                                                                        array(
+                                                                              "descripcion" 	=> "HONORARIOS",
+                                                                              "unidad_bulto"    => 1,
+                                                                              "lista_precios"   => "Lista general",
+                                                                              "codigo"		=> "HON",	
+                                                                              "precio_unitario_sin_iva" => 100,
+                                                                              "alicuota"	=> 21,
+                                                                              "unidad_medida" 	=> 7
+                                                                           )
+                                                         )
+                                       )
+                                    );
+				    
+   // totales
+   
+   $comprobante_data["total"]	   = 121; 
+
+
+
+   // ===== Envio a generar el comprobante =====
+   
+   $response = $tusfacturas_sdk_obj->comprobante_nuevo(  
+   						$tusfacturas_sdk_entidades->comprobante($comprobante_data) , 
+                                             	$tusfacturas_sdk_entidades->comprobante_cliente($cliente_data)     
+                                          	);
+					  
+					  
+
+
+   // ===== Controlo si hay error =====
+
+   if (!$tusfacturas_sdk_obj->hay_error($response)) {
+            echo "<p>
+                      Comprobante generado correctamente:<br />
+                      CAE: ".$response->cae. " (Vencimiento: ".$response->vencimiento_cae. " ) <br />
                       Factura PDF: ".$response->comprobante_pdf_url. "
                   </p>";
 
