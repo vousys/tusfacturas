@@ -1,6 +1,6 @@
 <?
  /*
- * Copyright (c) Verónica Osorio para VOUSYS.com  
+ * Copyright (c) Vero Osorio para VOUSYS.com  
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -14,8 +14,8 @@
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 
- * @author:         Verónica Osorio para VOUSYS.com 
- * @last-update:    2020-09-03
+ * @author:         Vero Osorio para VOUSYS.com 
+ * @last-update:    2021-03-23
  * 
  * 
  * METODOS INCLUIDOS:
@@ -87,6 +87,9 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     impuestos_internos_base     Campo numérico con 2 decimales. separador de decimales: punto.  Indica el valor monetario de la base computada para impuestos internos  realizada Ejemplo: 42.67 
                                                     impuestos_internos_alicuota     Campo numérico con 2 decimales. separador de decimales: punto. Indica la alicuota aplicada como impuestos internos  Ejemplo: 42.67 
       
+                                                    comprobantes_asociados          Detalle con la lista de comprobantes asociados a una ND o NC.
+                                                    comprobantes_asociados_periodo  Comprobantes asociados por periodo relacionados con una ND o NC.
+
                                                     exentos          Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario en concepto de exentos. Solo para comprobantes A y M Ejemplo: 72.67 
                                                     nogravados       Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario en concepto de no gravados. Solo para comprobantes A y M Ejemplo: 62.67 impuestos_internos    Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario en concepto de impuestos internos Ejemplo: 2.67 
                                                     total            Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor monetario de la sumatoria de conceptos incluyendo IVA e impuestos. Ejemplo: 12452.67
@@ -94,7 +97,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      * RESPUESTA:
      *     @return object  $comprobante     El array requerido para generar un comprobante.
      *
-     * @last-update  2020-04-04 
+     * @last-update  2021-03-23 
      *************************************************************** */
 
 
@@ -120,6 +123,12 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
 
             // Detalle de comprobante
             $comprobante["detalle"]           = $comprobante_data["detalle"]; 
+
+            // Comprobantes asociados
+            if (!isset($comprobante_data["comprobantes_asociados"]))         $comprobante_data["comprobantes_asociados"] = array();
+            if (!isset($comprobante_data["comprobantes_asociados_periodo"])) $comprobante_data["comprobantes_asociados_periodo"] = array("fecha_desde" => "", "fecha_hasta" => "");
+            $comprobante["comprobantes_asociados"]           = $comprobante_data["comprobantes_asociados"]; 
+            $comprobante["comprobantes_asociados_periodo"]   = $comprobante_data["comprobantes_asociados_periodo"]; 
 
  
             // ABONOS
@@ -451,6 +460,68 @@ function tabla_referencia_provincia($provincia ) {
                 return doubleval($alicuota);
                 break;
             }
+    }
+
+
+
+
+    /************************************************************** 
+     *
+     * FUNCIONALIDAD:  Crea un item para el bloque de comprobantes asociados x detalle
+     *         
+     * DOCUMENTACION:  
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante#estructura-de-comprobantes-asociados
+     *                                   
+     * PARAMETROS:
+     *
+     *     @param           string    $comprobante_fecha    Fecha del comprobante que se asocia en formato dd/mm/aaaa
+     *     @param           string    $tipo_comprobante     Valores Permitidos: segun tabla de referencia https://developers.tusfacturas.app/tablas-de-referencia#tipos-de-comprobantes
+     *     @param           numerico  $punto_venta          Numero del punto de venta del comprobante que se asocia. 
+     *     @param           numerico  $numero               Numero del comprobante que se asocia. 
+     *     @param           numerico  $cuit                 Numero de CUIT del emisor del comprobante que se asocia. 
+     *
+     * RESPUESTA:
+     *     @return          array     con la estructura de cada item que compone el bloque de "comprobantes_asociados"
+     *
+     * @last-update  2023-03-23 
+     *************************************************************** */
+
+    function comprobantes_asociados_detalle_item($comprobante_fecha, $tipo_comprobante, $punto_venta, $numero, $cuit) {
+
+         $data["comprobante_fecha"] = $comprobante_fecha;
+         $data["tipo_comprobante"]  = $tipo_comprobante;
+         $data["punto_venta"]       = $punto_venta;
+         $data["numero"]            = $numero;
+         $data["cuit"]              = $cuit;
+
+         return ($data);
+    }
+
+
+        /************************************************************** 
+     *
+     * FUNCIONALIDAD:  Crea un item para el bloque de comprobantes asociados x detalle
+     *         
+     * DOCUMENTACION:  
+     *                 https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante#estructura-de-comprobantes-asociados
+     *                                   
+     * PARAMETROS:
+     *
+     *     @param           string    $fecha_desde    Fecha del periodo que se asocia en formato dd/mm/aaaa
+     *     @param           string    $fecha_hasta    Fecha del periodo que se asocia en formato dd/mm/aaaa
+     *
+     * RESPUESTA:
+     *     @return          array     con la estructura de la informacion que compone el bloque "comprobantes_asociados_periodo"
+     *
+     * @last-update  2021-03-23 
+     *************************************************************** */
+
+    function comprobantes_asociados_periodo($fecha_desde, $fecha_hasta) {
+
+         $data["fecha_desde"]  = $fecha_desde;
+         $data["fecha_hasta"]  = $fecha_hasta; 
+
+         return ($data);
     }
 
 
