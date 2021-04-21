@@ -11,7 +11,7 @@
  * Class for tusfacturas.app
  * =======================================================================
  * SDK Version:    1.0   
- * last-update:    2021-03-23
+ * last-update:    2021-04-21
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 

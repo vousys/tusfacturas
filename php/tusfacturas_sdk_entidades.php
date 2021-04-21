@@ -10,12 +10,12 @@
  * ======================================================================================
  * Class for tusfacturas.app
  * ======================================================================================
- * 
+ * SDK Version:    1.0   
+ * last-update:    2021-04-21
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 
  * @author:         Vero Osorio para VOUSYS.com 
- * @last-update:    2021-03-23
  * 
  * 
  * METODOS INCLUIDOS:
@@ -23,7 +23,9 @@
  *     comprobante_cliente         Arma la estructura del cliente, requerida para crear un nuevo comprobante .
  *     comprobante_detalle_item    Arma la estructura del item para el objeto "detalle" de un comprobante.    
  *     producto                    Arma la estructura del producto, que componen un item del detalle.
- * 
+ *     rg_especiales_bloque        Arma la estructura del bloque de "rg_especiales" de un comprobante.  
+ *     rg_especiales_dato          Arma la estructura del dato, que componen un item de los datos a enviar para las rg_especiales. 
+ *
  * ======================================================================================
  */
  
@@ -69,9 +71,11 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     abono_hasta      Campo fecha. Formato mm/yyyy. Indica hasta que mes y año se va a ejecutar el abono
                                                     abono_actualiza_precios  Campo alfabetico,  Longitud 1 caracter. Valores esperados: S o N. Indica si se actualiza el precio de los productos facturados en cada abono que se cree.
 
-
+    
                                                     detalle          Lista de conceptos a facturar. Objeto JSON Según estructura que se detalla en la documentacion
                                                     fex              Solo para comprobantes de tipo E. Según estructura detallada en la documentacion de Factura electronica de exportacion". 
+                                                    rg_especiales    Solo para comprobantes de tipo MiPyme o que apliquen a una RG especial. Según estructura detallada en la documentacion de nueva venta > Estructura de "RG Especiales" (solo según corresponda)". 
+
                                                     bonificacion     Campo numérico con 2 decimales. separador de decimales: punto. Indica el valor aplicado en concepto de bonificación sin IVA Ejemplo: 12.67. Tener en cuenta para el cálculo que la bonificación se aplica sobre el primer subtotal SIN IVA y se lo gravará con el importe de IVA que le corresponda. 
                                                     leyenda_gral     Campo alfanumérico. Longitud máxima 255 caracteres. Contenido opcional. Es una leyenda general que saldrá impresa en el bloque central de productos del comprobante Ejemplo: Aplica plan 12 cuotas sin interes. 
                                                     comentario:      Campo alfanumerico, opcional. Longitud máxima: 255 caracteres. Éste campo no saldrá impreso en la factura.
@@ -97,7 +101,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      * RESPUESTA:
      *     @return object  $comprobante     El array requerido para generar un comprobante.
      *
-     * @last-update  2021-03-23 
+     * @last-update  2021-04-21 
      *************************************************************** */
 
 
@@ -130,6 +134,11 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
             $comprobante["comprobantes_asociados"]           = $comprobante_data["comprobantes_asociados"]; 
             $comprobante["comprobantes_asociados_periodo"]   = $comprobante_data["comprobantes_asociados_periodo"]; 
 
+            // FEX 
+            if (isset($comprobante_data["fex"])) $comprobante["fex"]  = $comprobante_data["fex"]; 
+
+            // RG Especiales 
+            if (isset($comprobante_data["rg_especiales"])) $comprobante["rg_especiales"]    =  $comprobante_data["rg_especiales"]; 
  
             // ABONOS
             $comprobante["abono"]             =  ( $comprobante_data["abono"] == "S" ? 1 : 2);
@@ -424,6 +433,65 @@ function tabla_referencia_provincia($provincia ) {
 
     }
 }
+
+
+    /************************************************************** 
+     *
+     * FUNCIONALIDAD:  Me devuelve el bloque de las rg especiales
+     *         
+     * DOCUMENTACION:  
+     *                https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante#estructura-de-rg-especiales-solo-segun-corresponda
+     *                                   
+     * PARAMETROS:
+     *
+     *     @param           string    regimen            Valores esperados según  Tabla de Datos Opcionales para RG Especiales
+     *     @param           array     datos              Lista de valores esperados según estructura definida en la funcion de rg_especiales_dato
+     *
+     * 
+     * RESPUESTA:
+     *     @return          array    bloque rg
+     *
+     * @last-update  2021-04-21 
+     *************************************************************** */
+    
+    function bloque_rg_especiales($regimen, $datos)
+    {
+        $rg_especiales              = array();
+        $rg_especiales["regimen"]   = $regimen;
+        $rg_especiales["datos"]     = $datos;
+
+        return $rg_especiales;
+    }
+
+
+
+    /************************************************************** 
+     *
+     * FUNCIONALIDAD:  Me devuelve el dato estructurado para el bloque de "datos" de las rg especiales
+     *         
+     * DOCUMENTACION:  
+     *                https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante#estructura-de-rg-especiales-solo-segun-corresponda
+     *                                   
+     * PARAMETROS:
+     *
+     *     @param           string    valor           informacion asociada al ID enviado.  Ej ID 2101, valor: 12345678901234567
+     *     @param           numeric   id              https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante#estructura-de-rg-especiales-solo-segun-corresponda
+     *
+     * 
+     * RESPUESTA:
+     *     @return          array    bloque del dato en cuestion
+     *
+     * @last-update  2021-04-21 
+     *************************************************************** */
+    
+    function bloque_rg_especiales_dato($id, $valor)
+    {
+        $dato                      = array();
+        $dato["id"]                = $id;
+        $dato["valor"]             = $valor;
+
+        return $dato;
+    }
 
 
     /************************************************************** 
