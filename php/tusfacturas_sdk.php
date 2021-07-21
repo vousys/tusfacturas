@@ -258,6 +258,51 @@ class tusfacturas_sdk {
     }
 
 
+
+    /****************************************************************************************************************
+     *
+     * FUNCIONALIDAD: 
+     *                 Mediante éste método podrás Consultar CUIT en constancia de inscripcióno  
+     *
+     * DOCUMENTACION: 
+     *                https://developers.tusfacturas.app/api-factura-electronica-afip-clientes-consultar-cuit-en-constancia-de-inscripcion
+     * 
+     * PARAMETROS: 
+     *               Numero de documento del cliente a buscar
+     * RESPUESTA:
+     *     @return object $resultado
+     *
+     * @last-update  2021-07-21
+     *************************************************************************************************************** */
+
+
+    function clientes_afip_info($documento_nro) {
+
+        // Credenciales de acceso
+
+        $data["apitoken"]   = $this->apitoken;
+        $data["apikey"]     = $this->apikey;
+        $data["usertoken"]  = $this->usertoken;
+
+        // Datos del cliente a buscar
+        $data["cliente"]    = array ("documento_tipo" => 'CUIT', 
+                                     "documento_nro"  => $documento_nro) ;
+
+       
+       // Si habilito debug, dump del array
+        if ($this->debug)         $this->dump($data); 
+
+        // Encodeo la data
+        $this->json_data    = json_encode ($data);
+
+        // Do API CALL
+        $resultado          = $this->api_call("clientes/afip-info");
+
+        return($resultado);
+    }
+
+
+
     /****************************************************************************************************************
      *
      * FUNCIONALIDAD: 
