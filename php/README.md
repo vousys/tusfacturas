@@ -30,9 +30,18 @@ Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-
 ```
    $tusfacturas_sdk_obj  = new tusfacturas_sdk();
    $tusfacturas_sdk_obj->set_keys( TUSFACTURAS_APIKEY, TUSFACTURAS_APITOKEN, TUSFACTURAS_USERTOKEN  );
-   $tusfacturas_sdk_obj->estado_servicios();
+   $response             = $tusfacturas_sdk_obj->estado_servicios();
 ```
 
+
+### Consultar datos asociados a un CUIT:
+Documentación: https://developers.tusfacturas.app/api-factura-electronica-afip-clientes-consultar-cuit-en-constancia-de-inscripcion
+
+```
+   $tusfacturas_sdk_obj  = new tusfacturas_sdk();
+   $tusfacturas_sdk_obj->set_keys( TUSFACTURAS_APIKEY, TUSFACTURAS_APITOKEN, TUSFACTURAS_USERTOKEN  );
+   $response             = $tusfacturas_sdk_obj->cliente_afip_info("1111111111");
+```
 
 
 ### Consulta de numeración de comprobantes:
