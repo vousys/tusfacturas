@@ -11,6 +11,7 @@
 Mediante nuestra API podrás conectar tu sistema de gestión actual con nuestra plataforma y emitir facturas electrónicas AFIP válidas. 
 Estamos homologados por AFIP desde el año 2012 y día a día mantenemos nuestra API actualizada con las últimas novedades impositivas.
 
+
 Conocé todo lo que podes hacer desde nuestra API:
 
 ## API Facturas, Notas de débito, Notas de crédito y facturas-recibo:
