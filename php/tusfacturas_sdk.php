@@ -1,6 +1,6 @@
 <?php
 
- /* Copyright (c) Vero Osorio para VOUSYS.com 
+ /* Copyright (c) VOUSYS.com 
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -11,7 +11,7 @@
  * Class for tusfacturas.app
  * =======================================================================
  * SDK Version:    1.0   
- * last-update:    2021-04-21
+ * last-update:    2023-05-13
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 
