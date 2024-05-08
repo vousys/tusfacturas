@@ -6,9 +6,9 @@
 [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://developers.tusfacturas.app/)
 
 
-# TusFacturas.app |  API Factura electrónica AFIP - SaaS Facturación Argentina
+# TusFacturas.app |  API y SDK para Factura electrónica AFIP - SaaS Facturación Argentina
 
-[TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)
+[![TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)](https://cdn.tusfacturas.app/web/images/ig/157.webp)
 
 ## SDK AFIP
 Simplifica la emisión de facturas electrónicas AFIP válidas con nuestro SDK homologado por AFIP desde 2012.
