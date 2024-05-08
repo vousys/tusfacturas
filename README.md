@@ -8,7 +8,7 @@
 
 # TusFacturas.app |  API Factura electrónica AFIP - SaaS Facturación Argentina
 
-[![TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)]
+[TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)
 
 ## SDK AFIP
 Simplifica la emisión de facturas electrónicas AFIP válidas con nuestro SDK homologado por AFIP desde 2012.
@@ -26,7 +26,7 @@ Encontrá toda la documentación aquí: https://developers.tusfacturas.app/api-f
 Emití con la API de facturación electrónica, facturas (A,B,C), notas de débito (A,B,C) y notas de crédito (A,B y C) de los comprobantes tipo Factura de crédito electrónica Mi Pyme.
 Encontrá toda la documentación aquí: https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante/api-factura-electronica-afip-factura-de-credito-electronica-mipyme-fce
 
-# API Factura de exportación:
+## API Factura de exportación:
 Emití con la API comprobantes de exportación de tipo factura E, nota de débito E y nota de crédito E.
 Encontrá toda la documentación necesaria para emitir factura electrónica AFIP de exportación desde aquí: https://www.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante/api-factura-electronica-afip-factura-electronica-afip-exportacion
 
@@ -45,9 +45,7 @@ Integrate. Consulta la documentación completa de nuestra API para factura elect
 ## Documentación de la API para facturación electrónica AFIP 
 https://developers.tusfacturas.app/
 
-# SDK :
-
-## SDK para PHP 
+# SDK AFIP para PHP 
 Descargá nuestro SDK para PHP y ahorra horas de trabajo.
 [PHP](https://github.com/vousys/tusfacturas/tree/master/php)
 
