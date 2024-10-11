@@ -16,7 +16,6 @@ La API Rest de factura electrónica Argentina provista por TusFacturasAPP, te pe
 [![TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)](https://cdn.tusfacturas.app/web/images/ig/157.webp)
 
 
-
 ## Documentación de la API para Facturación AFIP
 
 [Documentación](https://developers.tusfacturas.app)
@@ -46,7 +45,7 @@ Utilizá la API de facturación electrónica AFIP de TusFacturasAPP, para emitir
 
 [Documentación para facturar en AFIP](https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-ventas)
 
-
+<br /><br />
 
 ### Obtener cotizaciones moneda extranjera 
 Accede a cotizaciones de monedas extranjeras, oficiales de AFIP a través de nuestra API.
