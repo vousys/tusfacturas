@@ -7,14 +7,26 @@
 
 
 # TusFacturas.app |  API y SDK para Factura electrónica AFIP - SaaS Facturación Argentina
+Integra la facturación electrónica AFIP fácil y rápido con nuestra API. ¡Confiable desde 2015! Elegida por todos los desarrolladores.
+
+TusFacturasAPP es un software de facturación especialmente diseñado para empresas que facturen en Argentina. 
+
+¿Qué es la API para Factura Electrónica ?
+La API de factura electrónica Argentina provista por TusFacturasAPP, te permite generar de manera segura y rápida, comprobantes electrónicas válidos en AFIP Argentina. Contamos con el respaldo de un estudio impositivo que nos mantiene asesorados ante las nuevas normativas que surgen día a día en nuestro país.
 
 [![TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)](https://cdn.tusfacturas.app/web/images/ig/157.webp)
+
+## Documentación de la API para Facturación AFIP
+Accedé a toda la documentación de nuestra API facturación electrónica AFIP desde aquí: https://developers.tusfacturas.app/
+Creá tu cuenta gratis y proba la API de inmediato: https://www.tusfacturas.app/quiero-probar-api-factura-electronica.html
+
 
 ## SDK AFIP
 Simplifica la emisión de facturas electrónicas AFIP válidas con nuestro SDK homologado por AFIP desde 2012.
 Conecta tu plataforma a nuestra plataforma API y emiti facturas electrónicas, fácil y rápido. 
 Contamos con un equipo de asesores impositivos que nos mantienen actualizados día a día con las últimas normativas.
 
+<hr>
 # ¿Qué podes hacer con nuestro SDK para AFIP?:
 
 ## Emitir Facturas, Notas de débito, Notas de crédito y facturas-recibo desde nuestra API:
