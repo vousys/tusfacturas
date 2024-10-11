@@ -54,7 +54,7 @@ Accede a cotizaciones de monedas extranjeras, oficiales de AFIP a través de nue
 
 <br /><br />
 
-### - Consultar los datos de un CUIT
+### Consultar los datos de un CUIT
 Accede a la información completa de la constancia de inscripción de un CUIT a través de nuestra API de facturación electrónica AFIP. Obtene datos precisos y actualizados directamente desde la fuente oficial, ahorrando tiempo y esfuerzo.
 
 [Documentación API de consulta en constancia de inscripción AFIP](https://developers.tusfacturas.app/consultas-varias-a-servicios-afip/api-factura-electronica-afip-clientes-consultar-cuit-en-constancia-de-inscripcion)
