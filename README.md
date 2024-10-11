@@ -6,52 +6,68 @@
 [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://developers.tusfacturas.app/)
 
 
-# TusFacturas.app |  API y SDK para Factura electrónica AFIP - SaaS Facturación Argentina
-Integra la facturación electrónica AFIP fácil y rápido con nuestra API. ¡Confiable desde 2015! Elegida por todos los desarrolladores. TusFacturasAPP es un software de facturación especialmente diseñado para empresas que facturen en Argentina. 
+# TusFacturas.app: API y SDK para Factura electrónica AFIP. SaaS Facturación Argentina
+Integra la facturación electrónica AFIP fácil y rápido con nuestra API Rest para AFIP. ¡Confiable desde 2015! Elegida por todos los desarrolladores. TusFacturasAPP es un software de facturación especialmente diseñado para empresas que facturen en Argentina. 
 
 ## ¿Qué es la API para Factura Electrónica ?
-La API de factura electrónica Argentina provista por TusFacturasAPP, te permite generar de manera segura y rápida, comprobantes electrónicas válidos en AFIP Argentina. Contamos con el respaldo de un estudio impositivo que nos mantiene asesorados ante las nuevas normativas que surgen día a día en nuestro país.
+La API Rest de factura electrónica Argentina provista por TusFacturasAPP, te permite generar de manera segura y rápida, comprobantes electrónicas válidos en AFIP Argentina desde cualquier lenguaje de programación. Contamos con el respaldo de un estudio impositivo que nos mantiene asesorados ante las nuevas normativas que surgen día a día en nuestro país.
 
 [![TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)](https://cdn.tusfacturas.app/web/images/ig/157.webp)
 
+
+
 ## Documentación de la API para Facturación AFIP
-Accedé a toda la documentación de nuestra API facturación electrónica AFIP desde aquí: https://developers.tusfacturas.app/
-Creá tu cuenta gratis y proba la API de inmediato: https://www.tusfacturas.app/quiero-probar-api-factura-electronica.html
 
-## SDK AFIP
-Simplifica la emisión de facturas electrónicas AFIP válidas con nuestro SDK homologado por AFIP desde 2012. Conecta tu plataforma a nuestra plataforma API y emiti facturas electrónicas, fácil y rápido. Contamos con un equipo de asesores impositivos que nos mantienen actualizados día a día con las últimas normativas.
+[Documentación](https://developers.tusfacturas.app)
 
-<hr>
-# ¿Qué podes hacer con nuestro SDK para AFIP?:
-
-## Emitir Facturas AFIP, Notas de débito, Notas de crédito y facturas-recibo desde nuestra API:
-Utilizá la API de facturación electrónica AFIP, para emitir facturas (A,B,C,E, M y MiPyme), notas de debito (A,B,C,E, M y MiPyme), notas de credito (A,B,C,E, M y MiPyme) Y factura-recibo (A,B,C) desde tu software. Configuralo en 5 minutos. Encontrá toda la <a href="https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-ventas" title="Factura AFIP Nueva Venta TusFacturasAPP" alt="Factura AFIP Nueva Venta TusFacturasAPP">documentación aquí</a>.
+Accedé a toda la documentación de nuestra API Rest facturación electrónica AFIP y facturá desde un JSON.
 
 
-## API Factura de Crédito Electrónica MiPyme (FCE) :
-Emití con la API de facturación electrónica, facturas (A,B,C), notas de débito (A,B,C) y notas de crédito (A,B y C) de los comprobantes tipo Factura de crédito electrónica Mi Pyme.
-Encontrá toda la documentación aquí: https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante/api-factura-electronica-afip-factura-de-credito-electronica-mipyme-fce
 
-## API Factura de exportación:
-Emití con la API comprobantes de exportación de tipo factura E, nota de débito E y nota de crédito E.
-Encontrá toda la documentación necesaria para emitir factura electrónica AFIP de exportación desde aquí: https://www.tusfacturas.app/api-factura-electronica-afip-facturacion-nuevo-comprobante/api-factura-electronica-afip-factura-electronica-afip-exportacion
+## Proba la API gratis
 
-## API Cotización dolar AFIP y otras monedas extranjeras:
-Obtene acceso a las cotizaciones de AFIP a través de la API de facturación electrónica de TusFacturasAPP.
-Encontrá toda la documentación aquí: https://developers.tusfacturas.app/cotizacion-monedas-afip
+[Crea tu cuenta](https://www.tusfacturas.app/quiero-probar-api-factura-electronica.html) gratis por un mes.
 
-## API Consulta de constancia de inscripción AFIP :
-Accede a la información completa de la constancia de inscripción de un CUIT a través de nuestra API de facturación electrónica AFIP.
-Obtene datos precisos y actualizados directamente desde la fuente oficial, ahorrando tiempo y esfuerzo.
-Encontrá toda la documentación aquí: https://developers.tusfacturas.app/api-factura-electronica-afip-clientes-consultar-cuit-en-constancia-de-inscripcion
 
-# Tenemos muchas más herramientas!
-Integrate. Consulta la documentación completa de nuestra API para factura electrónica AFIP y comenzá a facturar en cuestión de minutos.
+## SDK PHP para AFIP
 
-## Documentación de la API para facturación electrónica AFIP 
-https://developers.tusfacturas.app/
+Simplifica la emisión de facturas electrónicas AFIP con nuestro SDK AFIP para PHP. Homologado por AFIP desde 2012. 
 
-# SDK AFIP para PHP 
-Descargá nuestro SDK para PHP y ahorra horas de trabajo.
-[PHP](https://github.com/vousys/tusfacturas/tree/master/php)
+Descargá el [SDK AFIP PHP](https://github.com/vousys/tusfacturas/tree/master/php)
+
+
+## ¿Qué podes hacer con nuestra API Rest para AFIP?
+
+### Facturar en AFIP
+Utilizá la API de facturación electrónica AFIP de TusFacturasAPP, para emitir facturas, notas de crédito, notas de débito y facturas-recibo (cod.11) de tipo A,B,C,E, M y MiPyme desde tu plataforma y olvidate! 
+
+[Documentación para facturar en AFIP](https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-ventas)
+
+
+### Obtener cotizaciones moneda extranjera 
+Accede a cotizaciones de monedas extranjeras, oficiales de AFIP a través de nuestra API.
+
+[Documentación API Cotización dolar AFIP](https://developers.tusfacturas.app/consultas-varias-a-servicios-afip/cotizacion-monedas-afip)
+
+### Consultar los datos de un CUIT
+Accede a la información completa de la constancia de inscripción de un CUIT a través de nuestra API de facturación electrónica AFIP. Obtene datos precisos y actualizados directamente desde la fuente oficial, ahorrando tiempo y esfuerzo.
+
+[Documentación API de consulta en constancia de inscripción AFIP](https://developers.tusfacturas.app/consultas-varias-a-servicios-afip/api-factura-electronica-afip-clientes-consultar-cuit-en-constancia-de-inscripcion)
+
+### Obtener el PDF de tus facturas
+Nuestra API te resuelve no solo la integración con AFIP sino tambien la generación y envío del PDF a tus clientes, ya sea en formato de hoja A4 o en formato [ticket para impresora térmica con papel de 80mm](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-impresion-tickets.html). Contamos con diferentes estilos de PDF para hoja A4 porque sabemos lo importante que es tu marca. 
+
+### Envío de facturas por e-mail a clientes 
+La API de facturación electrónica AFIP de TusFacturasAPP te permite con un solo request, [enviarle a tu cliente la factura por e-mail](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-facturacion.html). Reenviala las veces que sea necesario.
+
+### Recibos de cobro y órdenes de pago
+La API de TusFacturasAPP te permite ademas generar recibos de cobro a tus clientes y órdenes de pago a tus proveedores, ademas de enviarle un [recordatorio de pago automático](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-recordatorios.html) a tus clientes por las facturas impagas. 
+
+## Tenemos muchas más herramientas!
+Conocé todas las herramientas que tenemos disponibles.
+[Documentación API AFIP](https://developers.tusfacturas.app/)
+
+## Autores
+
+- [@vousys](https://www.github.com/vousys)
 
