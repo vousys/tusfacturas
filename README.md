@@ -20,7 +20,7 @@ La API Rest de factura electrónica Argentina provista por TusFacturasAPP, te pe
 
 [Documentación](https://developers.tusfacturas.app)
 
-Accedé a toda la documentación de nuestra API Rest facturación electrónica AFIP y facturá desde un JSON.
+Accedé a toda la documentación de nuestra API Rest para factura electrónica AFIP y facturá desde un JSON con cualquier lenguaje de programación.
 
 
 
