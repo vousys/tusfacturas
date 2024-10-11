@@ -52,9 +52,9 @@ Accede a cotizaciones de monedas extranjeras, oficiales de AFIP a través de nue
 
 [Documentación API Cotización dolar AFIP](https://developers.tusfacturas.app/consultas-varias-a-servicios-afip/cotizacion-monedas-afip)
 
+<br /><br />
 
-
-### Consultar los datos de un CUIT
+### - Consultar los datos de un CUIT
 Accede a la información completa de la constancia de inscripción de un CUIT a través de nuestra API de facturación electrónica AFIP. Obtene datos precisos y actualizados directamente desde la fuente oficial, ahorrando tiempo y esfuerzo.
 
 [Documentación API de consulta en constancia de inscripción AFIP](https://developers.tusfacturas.app/consultas-varias-a-servicios-afip/api-factura-electronica-afip-clientes-consultar-cuit-en-constancia-de-inscripcion)
@@ -70,8 +70,8 @@ La API de facturación electrónica AFIP de TusFacturasAPP te permite con un sol
 
 <br /><br />
 
-### Recibos de cobro y órdenes de pago
-La API de TusFacturasAPP te permite ademas generar recibos de cobro a tus clientes y órdenes de pago a tus proveedores, ademas de enviarle un [recordatorio de pago automático](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-recordatorios.html) a tus clientes por las facturas impagas. 
+### Crear recibos de cobro y órdenes de pago
+La API de TusFacturasAPP te permite ademas generar [recibos de cobro](https://developers.tusfacturas.app/recibos-de-cobro-y-ordenes-de-pago) a tus clientes y [órdenes de pago](https://developers.tusfacturas.app/recibos-de-cobro-y-ordenes-de-pago/api-factura-electronica-afip-or-ingresar-pago-2) a tus proveedores, ademas de enviarle un [recordatorio de pago automático](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-recordatorios.html) a tus clientes por las facturas impagas. 
 
 <br /><br />
 
