@@ -14,7 +14,7 @@ Integra la facturación electrónica AFIP fácil y rápido con nuestra API Rest 
 La API Rest de factura electrónica Argentina provista por TusFacturasAPP, te permite generar de manera segura y rápida, comprobantes electrónicas válidos en AFIP Argentina desde cualquier lenguaje de programación. Contamos con el respaldo de un estudio impositivo que nos mantiene asesorados ante las nuevas normativas que surgen día a día en nuestro país.
 
 [![TusFacturasAPP - API SDK AFIP](https://cdn.tusfacturas.app/web/images/ig/157.webp)](https://cdn.tusfacturas.app/web/images/ig/157.webp)
-
+<br /><br />
 
 ## Documentación de la API para Facturación AFIP
 
@@ -22,13 +22,13 @@ La API Rest de factura electrónica Argentina provista por TusFacturasAPP, te pe
 
 Accedé a toda la documentación de nuestra API Rest para factura electrónica AFIP y facturá desde un JSON con cualquier lenguaje de programación.
 
-
+<br /><br />
 
 ## Proba la API gratis
 
 [Crea tu cuenta](https://www.tusfacturas.app/quiero-probar-api-factura-electronica.html) gratis por un mes.
 
-
+<br /><br />
 
 ## SDK PHP para AFIP
 
@@ -36,7 +36,7 @@ Simplifica la emisión de facturas electrónicas AFIP con nuestro SDK AFIP para 
 
 Descargá el [SDK AFIP PHP](https://github.com/vousys/tusfacturas/tree/master/php)
 
-
+<br /><br />
 
 ## ¿Qué podes hacer con nuestra API Rest para AFIP?
 
@@ -58,28 +58,28 @@ Accede a cotizaciones de monedas extranjeras, oficiales de AFIP a través de nue
 Accede a la información completa de la constancia de inscripción de un CUIT a través de nuestra API de facturación electrónica AFIP. Obtene datos precisos y actualizados directamente desde la fuente oficial, ahorrando tiempo y esfuerzo.
 
 [Documentación API de consulta en constancia de inscripción AFIP](https://developers.tusfacturas.app/consultas-varias-a-servicios-afip/api-factura-electronica-afip-clientes-consultar-cuit-en-constancia-de-inscripcion)
-
+<br /><br />
 
 ### Obtener el PDF de tus facturas
 Nuestra API te resuelve no solo la integración con AFIP sino tambien la generación y envío del PDF a tus clientes, ya sea en formato de hoja A4 o en formato [ticket para impresora térmica con papel de 80mm](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-impresion-tickets.html). Contamos con diferentes estilos de PDF para hoja A4 porque sabemos lo importante que es tu marca. 
 
-
+<br /><br />
 
 ### Envío de facturas por e-mail a clientes 
 La API de facturación electrónica AFIP de TusFacturasAPP te permite con un solo request, [enviarle a tu cliente la factura por e-mail](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-facturacion.html). Reenviala las veces que sea necesario.
 
-
+<br /><br />
 
 ### Recibos de cobro y órdenes de pago
 La API de TusFacturasAPP te permite ademas generar recibos de cobro a tus clientes y órdenes de pago a tus proveedores, ademas de enviarle un [recordatorio de pago automático](https://www.tusfacturas.app/caracteristicas-de-tus-facturas-electronica-recordatorios.html) a tus clientes por las facturas impagas. 
 
-
+<br /><br />
 
 ## Tenemos muchas más herramientas!
 Conocé todas las herramientas que tenemos disponibles.
 [Documentación API AFIP](https://developers.tusfacturas.app/)
 
-
+<br /><br />
 
 ## Autores
 
