@@ -11,11 +11,11 @@
  * Class for tusfacturas.app
  * ======================================================================================
  * SDK Version:    1.0   
- * last-update:    2023-05-13
+ * last-update:    2024-11-04
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 
- * @author:         Vero Osorio para VOUSYS.com 
+ * @author:         VOUSYS.com 
  * 
  * 
  * METODOS INCLUIDOS:
@@ -63,6 +63,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     periodo_facturado_hasta    Campo fecha. Contenido opcional. Formato esperado: dd/mm/aaaa.
                                                     vencimiento     Campo fecha. Contenido opcional. Formato esperado: dd/mm/aaaa. 
                                                     rubro            Campo alfanumérico. Longitud máxima 255 caracteres. Indica el rubro al cual pertenecerá el comprobante. Ésta información no saldrá impresa en el comprobante. 
+                                                    external_reference     Campo alfanumérico. Longitud máxima 255 caracteres. 
                                                     rubro_grupo_contable    Campo alfanumérico. Longitud máxima 255 caracteres. Indica el grupo contable al que pertenece el rubro. Ésta información no saldrá impresa en el comprobante. 
                                                     
 
@@ -118,7 +119,8 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
             $comprobante["vencimiento"]       = $comprobante_data["vencimiento"];
             $comprobante["rubro"]             = utf8_encode(trim($comprobante_data["rubro"])        == '' ? "Deudores Varios" : $comprobante_data["rubro"]); 
             $comprobante["rubro_grupo_contable"] = utf8_encode (trim($comprobante_data["rubro_grupo_contable"]) == '' ? "Ventas" : $comprobante_data["rubro_grupo_contable"]); 
-
+            $comprobante["external_reference"]       = $comprobante_data["external_reference"];
+     
             // Detalle de comprobante
             $comprobante["detalle"]           = $comprobante_data["detalle"]; 
 
