@@ -87,7 +87,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
       
                                                     comprobantes_asociados          Detalle con la lista de comprobantes asociados a una ND o NC.
                                                     comprobantes_asociados_periodo  Comprobantes asociados por periodo relacionados con una ND o NC.
-                                                
+                                                    datos_informativos           Array con info adicional de caracter informativo
                                                     pagos            un detalle de los pagos que recibe (opcional) 
                                                     tributos         un detalle de los impuestos y percepciones que recibe (opcional) 
 
@@ -96,7 +96,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
      * RESPUESTA:
      *     @return object  $comprobante     El array requerido para generar un comprobante.
      *
-     * @last-update  2023-05-13 
+     * @last-update  2025-02-11 
      *************************************************************** */
 
 
@@ -135,7 +135,11 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
 
             // RG Especiales 
             if (isset($comprobante_data["rg_especiales"])) $comprobante["rg_especiales"]    =  $comprobante_data["rg_especiales"]; 
- 
+
+            // Datos informativos
+            $comprobante["datos_informativos"]  = array('paga_misma_moneda' => 'N');
+            if (isset($comprobante_data["datos_informativos"])) $comprobante["datos_informativos"]  = $comprobante_data["datos_informativos"]; 
+
             // ABONOS
             $comprobante["abono"]             =   $comprobante_data["abono"]  ;
             $comprobante["abono_frecuencia"]  =  ( intval($comprobante_data["abono_frecuencia"]) == 0 ? 1 : $comprobante_data["abono_frecuencia"] ) ;
@@ -185,11 +189,12 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                                                     condicion_pago:    Campo numérico que indica la cantidad de dias en los cuales vence el plazo de pago. Valores Permitidos: 0,30,60,90  
                                                     condicion_pago_otra:    Campo alfabetico que indica la descripcion de la nueva condicion de pago.  
                                                     condicion_iva:    Campo numérico que indica la condicion de iva, según tabla de referencia Condiciones ante el IVA(**).  
+                                                    condicion_iva_operacion:    Campo numérico que indica la condicion de iva en que el receptor concreta la operacion, según tabla de referencia Condiciones ante el IVA(**).  
      *                                              
      * RESPUESTA:
      *     @return object  $cliente                 El array requerido para generar un comprobante.
      *
-     * @last-update  2023-05-13 
+     * @last-update  2025-02-11 
      *************************************************************** */
 
 
@@ -207,7 +212,8 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                     "envia_por_mail" => (trim($parametros["envia_por_mail"])!= '' ? $parametros["envia_por_mail"] : "N"),
                     "condicion_pago" => intval($parametros["condicion_pago"]),
                     "condicion_pago_otra" => intval($parametros["condicion_pago_otra"]),
-                    "condicion_iva"  => $parametros["condicion_iva"]  
+                    "condicion_iva"  => $parametros["condicion_iva"] ,
+                    "condicion_iva_operacion"  => (isset( $parametros["condicion_iva_operacion"] ) ? $parametros["condicion_iva_operacion"]  : $parametros["condicion_iva"]) 
                 );
 
                 return($cliente);
