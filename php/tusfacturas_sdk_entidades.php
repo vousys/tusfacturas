@@ -11,7 +11,7 @@
  * Class for tusfacturas.app
  * ======================================================================================
  * SDK Version:    1.0   
- * last-update:    2024-11-04
+ * last-update:    2025-07-23
  * API Version:    2.0
  * Encoding:       UTF-8  
  * 
@@ -203,6 +203,7 @@ class tusfacturas_sdk_entidades extends tusfacturas_sdk{
                 $cliente = array(
                     "documento_tipo" => (trim($parametros["documento_tipo"]) == '' ? "DNI" : $parametros["documento_tipo"] ) ,    
                     "razon_social"   => utf8_encode($parametros["razon_social"]),
+                    "nombre_fantasia"   => utf8_encode($parametros["nombre_fantasia"]),
                     "email"          => $parametros["email"],
                     "codigo"         => trim($parametros["codigo"]),
                     "domicilio"      => utf8_encode($parametros["domicilio"]),
