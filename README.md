@@ -358,18 +358,7 @@ curl -X POST https://www.tusfacturas.app/app/api/v2/facturacion/nuevo \
 
 📖 [Referencia API](https://developers.tusfacturas.app/api-factura-electronica-afip-facturacion-ventas/referencia-api-afip-arca) · [Ejemplos JSON por tipo de comprobante](https://developers.tusfacturas.app/web-services-afip-api-arca)
 
-¿Portaste el SDK a otro lenguaje? Abrí un issue y lo enlazamos desde acá.
-
----
-
-## Contribuir
-
-1. Abrí un [issue](https://github.com/vousys/tusfacturas/issues) con el caso
-2. Forkeá y creá una rama (`git checkout -b fix/mi-mejora`)
-3. Mandá un Pull Request
-
-Buscamos especialmente: ports a otros lenguajes, ejemplos para frameworks (Laravel, Symfony, WooCommerce) y mejoras al manejo de errores.
-
+ 
 ---
 
 ## Soporte
