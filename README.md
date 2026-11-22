@@ -16,7 +16,7 @@
 
 Librería PHP para emitir comprobantes electrónicos válidos ante ARCA (ex AFIP) desde tu aplicación, sin tocar SOAP, WSAA, certificados X.509 ni WSFEv1.
 
-Dos archivos, sin dependencias externas, sobre la API REST v2 de [TusFacturasAPP](https://www.tusfacturas.app/).
+Dos archivos, sin dependencias externas, sobre la API REST v2 de [TusFacturasAPP]([https://www.tusfacturas.app/](https://www.tusfacturas.app/api-factura-electronica-afip.html).
 
 ```php
 $sdk = new tusfacturas_sdk();
@@ -25,7 +25,7 @@ $response = $sdk->comprobante_nuevo($comprobante, $cliente);
 
 echo $response->cae;  // 65301278726386
 ```
-
+🔌 [API ARCA](https://www.tusfacturas.app/api-factura-electronica-afip.html) 
 📚 [Documentación de la API](https://developers.tusfacturas.app/) · 🧪 [Cuenta de prueba gratis](https://www.tusfacturas.app/probar-gratis-api-factura-electronica-tusfacturasapp) · 🏢 [Sobre la plataforma](https://github.com/vousys/tusfacturas.app)
 
 ---
